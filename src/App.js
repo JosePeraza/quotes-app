@@ -2,12 +2,15 @@ import './App.css';
 import QuoteBox from './componentes/QuoteBox.js';
 import { useState } from 'react';
 import Data from "./quotes.json";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
-const randomIndex = (length) => Math.floor(Math.rendom() * length);
-const randomQuote = () => Data.quotes[randomIndex(Data.quotes.length)];
+const randomIndex = (length) => Math.floor(Math.random() * length);
+const randomQuote = () => Data[randomIndex(Data.length)];
 
 function App() {
-  const color = [
+  const colors = [
     "#007580",
     "#282846",
     "#d8ebe4",
@@ -23,10 +26,30 @@ function App() {
     "#810034",
     "#ff005c",
   ];
-const [currentQuote, setCurrentQuote] = useState(randomQuote);
+const [currentQuote, setCurrentQuote] = useState(randomQuote());
+const [currentColor, setCurrentColor] = useState(
+  colors[randomIndex(colors.length)]
+);
+
+const handleFetchCurrentNote = (event) => {
+  setCurrentQuote(randomQuote());
+  setCurrentColor(colors[randomIndex(colors.length)]);
+};
+
 
   return (
-    <QuoteBox />
+    <Container className="j-center a-center d-flex c-fluid" fluid style={{ backgroundColor: currentColor}}>
+      <Row>
+        <Col>
+          <QuoteBox 
+            colorVariant={currentColor} 
+            quotePayload={currentQuote}
+            fetchNewQuote={handleFetchCurrentNote}
+          />
+        </Col>
+      </Row>
+    </Container> 
+    
   );
 }
 

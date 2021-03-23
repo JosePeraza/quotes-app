@@ -1,8 +1,8 @@
 import Button from 'react-bootstrap/Button';
 
-const ButtonQuote = ({colorVariant, content, URL}) => {
+const ButtonQuote = ({colorVariant, content, URL, newquote}) => {
     return (
-        <Button href={URL} style={{ backgroundColor: colorVariant }}>{content}</Button> 
+        <Button onClick={newquote} href={URL} style={{ backgroundColor: colorVariant }}>{content}</Button> 
     )
   };
   

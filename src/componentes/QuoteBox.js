@@ -7,25 +7,26 @@ import Container from 'react-bootstrap/Container';
 
 
 const QuoteBox = ({ quotePayload, fetchNewQuote, colorVariant }) => {
-    const { quote, author } = quotePayload;
-    const url = `https://twiter.com/intent/tweet?text=${quote}-${author}`;
+
+    const { quoteText, quoteAuthor } = quotePayload;
+    
+    const url = `https://twiter.com/intent/tweet?text=${quoteText}-${quoteAuthor}`;
+
 
     return (
-        <Container style={{ backgroudColor: colorVariant}}>
+        <Container>
             <Card>
                 <Card.Body>
                     <Row>
                         <Col>
-                            <Quote quote="hola" author="fulanito"/>
+                            <Quote colorVariant={colorVariant} quote={quoteText} author={quoteAuthor}/>
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <ButtonQuote URL={url} content="Tweet"/>
-                        </Col>
-                        <Col>
-                            <ButtonQuote newquote={fetchNewQuote} content="New Quote"/>
-                        </Col>
+                        <Container className="d-flex j-space-between" fluid>
+                            <ButtonQuote  colorVariant={colorVariant} URL={url} content="Tweet"/>
+                            <ButtonQuote  colorVariant={colorVariant} newquote={fetchNewQuote} content="New Quote"/>
+                        </Container>
                     </Row>
                 </Card.Body>
             </Card>

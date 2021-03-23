@@ -2,4 +2,22 @@
   text-align: center;
 }
 
+.c-fluid {
+  height: 100vh;
+}
 
+.d-flex {
+  display: flex;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.j-space-between {
+  justify-content: space-between;
+}
