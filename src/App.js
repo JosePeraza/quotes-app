@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import QuoteBox from './componentes/QuoteBox.js';
+import { useState } from 'react';
+import Data from "./quotes.json";
+
+const randomIndex = (length) => Math.floor(Math.rendom() * length);
+const randomQuote = () => Data.quotes[randomIndex(Data.quotes.length)];
 
 function App() {
+  const color = [
+    "#007580",
+    "#282846",
+    "#d8ebe4",
+    "#bb8082",
+    "#bb8082",
+    "#6e7582",
+    "#046582",
+    "#440a67",
+    "#93329e",
+    "#b4aee8",
+    "#b4aee8",
+    "#ffe3fe",
+    "#810034",
+    "#ff005c",
+  ];
+const [currentQuote, setCurrentQuote] = useState(randomQuote);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QuoteBox />
   );
 }
 
